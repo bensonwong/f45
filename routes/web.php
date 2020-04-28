@@ -13,3 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('card/{id}', 'CardController@show');
+
+Route::get('f45-dixie/{slug}', 'MemberController@show');

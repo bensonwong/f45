@@ -17,9 +17,13 @@ class CreateCardsTable extends Migration
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
 
-            $table->string('studio_name');
-            $table->string('member_name');
-            $table->string('img');
+            $table->string('slug');
+
+            $table->string('studio_slug');
+            $table->string('member_slug');
+            $table->string('studio_name')->nullable();
+            $table->string('member_name')->nullable();
+            $table->string('img')->nullable();
             $table->integer('week_number');
 
             $table->string('classes')->nullable();
@@ -27,13 +31,14 @@ class CreateCardsTable extends Migration
             $table->timestamps();
         });
 
-        Card::create([
-            'studio_name' => 'F45 DIXIE',
-            'member_name' => 'Janice Rogers',
-            'week_number' => 17,
-            'classes' => 'foxtrot,bears,tripledouble,romans',
-            'img' => '/img/janice.png',
-        ]);
+        foreach (\App\Member::all() as $member) {
+            Card::create([
+                'studio_slug' => 'f45-dixie',
+                'member_slug' => $member->slug,
+                'week_number' => 18,
+                'classes' => '',
+            ]);
+        }
     }
 
     /**
