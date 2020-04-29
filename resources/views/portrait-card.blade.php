@@ -58,7 +58,7 @@ $weekNumber = @$c->week_number ?: 18;
     <div class="footer">
         <div class="details-container">
             @foreach($maxClasses as $class)
-                <div class="f45-highlight {{$class}} @if(in_array($class, $classes)) no-show @endif"></div>
+                <div class="f45-highlight {{$class}} @if(!in_array($class, $classes)) no-show @endif"></div>
             @endforeach
         </div>
 
