@@ -230,6 +230,11 @@ img {
     top: 153px;
 }
 
+.no-show {
+    filter: grayscale(100%);
+    opacity: 25%;
+}
+
 .bears {
     background-repeat: no-repeat;
     background-image: url('/img/bears.png');

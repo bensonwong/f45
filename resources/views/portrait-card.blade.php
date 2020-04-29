@@ -13,7 +13,8 @@ if (!isset($c->img)) {
 } else {
     $img = Storage::url($c->img);
 }
-$classes = @$c->classesArray ?: ['athletica', 'bears'];
+$maxClasses = ['foxtrot', 'romans'];
+$classes = @$c->classesArray ?: ['athletica'];
 $weekNumber = @$c->week_number ?: 18;
 ?>
 
@@ -56,8 +57,8 @@ $weekNumber = @$c->week_number ?: 18;
 
     <div class="footer">
         <div class="details-container">
-            @foreach($classes as $class)
-                <div class="f45-highlight {{$class}}"></div>
+            @foreach($maxClasses as $class)
+                <div class="f45-highlight {{$class}} @if(in_array($class, $classes)) no-show @endif"></div>
             @endforeach
         </div>
 
